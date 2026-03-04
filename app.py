@@ -26,7 +26,6 @@ html, body, [class*="css"] {
 }
 .stApp { background-color: #0d1117; }
 
-/* ── Sidebar ── */
 section[data-testid="stSidebar"] {
     background-color: #161b22;
     border-right: 1px solid #30363d;
@@ -46,60 +45,93 @@ section[data-testid="stSidebar"] label {
     padding: 14px 18px;
     margin: 4px 0;
 }
-.metric-label { color: #8b949e; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.metric-label { color: #8b949e; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom:3px; }
 .metric-value { color: #e6edf3; font-size: 20px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
 .metric-delta-pos { color: #3fb950; font-size: 12px; font-family: 'JetBrains Mono', monospace; }
 .metric-delta-neg { color: #f85149; font-size: 12px; font-family: 'JetBrains Mono', monospace; }
 
 /* ── Title ── */
-.tv-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 26px;
-    color: #58a6ff;
-    letter-spacing: -0.5px;
-    line-height: 1.2;
-}
+.tv-title { font-family:'Syne',sans-serif; font-weight:800; font-size:26px; color:#58a6ff; letter-spacing:-0.5px; }
 
-/* ── Unified toolbar ── */
-.toolbar-wrap {
-    display: flex;
-    align-items: center;
-    gap: 0;
+/* ── Toolbar container ── */
+.toolbar-container {
     background: #161b22;
     border: 1px solid #30363d;
-    border-radius: 8px;
-    padding: 5px 8px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-    row-gap: 4px;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
 }
-.tb-sep {
-    width: 1px;
-    height: 22px;
-    background: #30363d;
-    margin: 0 8px;
-    flex-shrink: 0;
-}
-.tb-group-label {
+.toolbar-group-label {
     color: #484f58;
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0 6px 0 2px;
-    white-space: nowrap;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    font-family: 'JetBrains Mono', monospace;
+}
+.toolbar-divider {
+    height: 1px;
+    background: #21262d;
+    margin: 10px 0;
+}
+
+/* ── st.pills styling override ── */
+div[data-testid="stPills"] {
+    gap: 4px !important;
+}
+div[data-testid="stPills"] button {
+    background: #21262d !important;
+    color: #8b949e !important;
+    border: 1px solid #30363d !important;
+    border-radius: 6px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 4px 10px !important;
+    transition: all 0.15s ease !important;
+}
+div[data-testid="stPills"] button:hover {
+    background: #2d333b !important;
+    color: #e6edf3 !important;
+    border-color: #484f58 !important;
+}
+div[data-testid="stPills"] button[aria-pressed="true"],
+div[data-testid="stPills"] button[aria-selected="true"],
+div[data-testid="stPills"] button.selected {
+    background: #1f3d5c !important;
+    color: #58a6ff !important;
+    border-color: #58a6ff !important;
 }
 
 /* ── Signal badges ── */
-.signal-buy    { background:#1a3a2a; color:#3fb950; border:1px solid #3fb950; padding:3px 12px; border-radius:20px; font-size:12px; font-weight:700; letter-spacing:1px; }
-.signal-sell   { background:#3a1a1a; color:#f85149; border:1px solid #f85149; padding:3px 12px; border-radius:20px; font-size:12px; font-weight:700; letter-spacing:1px; }
-.signal-neutral{ background:#1f2937; color:#8b949e; border:1px solid #8b949e; padding:3px 12px; border-radius:20px; font-size:12px; font-weight:700; letter-spacing:1px; }
-.ha-badge      { background:#1f2d3d; color:#58a6ff; border:1px solid #58a6ff; padding:2px 8px;  border-radius:10px; font-size:10px; font-weight:700; letter-spacing:1px; }
+.signal-buy    { background:#1a3a2a; color:#3fb950; border:1px solid #3fb950; padding:3px 14px; border-radius:20px; font-size:12px; font-weight:700; }
+.signal-sell   { background:#3a1a1a; color:#f85149; border:1px solid #f85149; padding:3px 14px; border-radius:20px; font-size:12px; font-weight:700; }
+.signal-neutral{ background:#1f2937; color:#8b949e; border:1px solid #8b949e; padding:3px 14px; border-radius:20px; font-size:12px; font-weight:700; }
+.ha-badge      { background:#1f2d3d; color:#58a6ff; border:1px solid #58a6ff; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700; }
+
+/* ── Active info bar ── */
+.active-bar {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #8b949e;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.active-item { display: flex; gap: 5px; align-items: center; }
+.active-key  { color: #484f58; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.active-val  { color: #e6edf3; font-weight: 700; }
 
 /* ── Tabs ── */
-button[data-baseweb="tab"]                         { color: #8b949e !important; }
-button[data-baseweb="tab"][aria-selected="true"]   { color: #58a6ff !important; border-bottom-color: #58a6ff !important; }
-div[data-testid="stMetricValue"]                   { color: #e6edf3 !important; }
+button[data-baseweb="tab"]                       { color: #8b949e !important; }
+button[data-baseweb="tab"][aria-selected="true"] { color: #58a6ff !important; border-bottom-color: #58a6ff !important; }
+div[data-testid="stMetricValue"]                 { color: #e6edf3 !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -108,23 +140,30 @@ div[data-testid="stMetricValue"]                   { color: #e6edf3 !important; 
 # CONSTANTS
 # ═══════════════════════════════════════════════════════════════════════════════
 
-# Timeframe groups  display-label -> yfinance code
-INTRADAY = {"1m":"1m","5m":"5m","15m":"15m","30m":"30m","1h":"1h","4h":"4h"}
-DAILY    = {"1D":"1d","3D":"3d","5D":"5d"}
-WEEKLY   = {"1W":"1wk","2W":"2wk"}
-MONTHLY  = {"1M":"1mo"}
-ALL_TF   = {**INTRADAY, **DAILY, **WEEKLY, **MONTHLY}
+# ── Timeframe definitions ──
+TF_INTRADAY = ["1m","5m","15m","30m","1h","4h"]
+TF_DAILY    = ["1D","3D","5D"]
+TF_WEEKLY   = ["1W","2W"]
+TF_MONTHLY  = ["1M","3M"]
+
+# Map display label → yfinance interval code
+TF_TO_INTERVAL = {
+    "1m":"1m","5m":"5m","15m":"15m","30m":"30m","1h":"1h","4h":"4h",
+    "1D":"1d","3D":"3d","5D":"5d",
+    "1W":"1wk","2W":"2wk",
+    "1M":"1mo","3M":"3mo",
+}
 
 PERIODS = {
     "1 Day":"1d","5 Days":"5d","1 Month":"1mo","3 Months":"3mo",
     "6 Months":"6mo","1 Year":"1y","2 Years":"2y","5 Years":"5y","Max":"max",
 }
 
-# Chart type options with icons
-CHART_OPTIONS = {
-    "Candlestick":  "🕯️ Candle",
-    "Heikin-Ashi":  "✳️ Heikin-Ashi",
-    "Line":         "📈 Line",
+# ── Chart types ──
+CHART_TYPES = {
+    "🕯️ Candlestick": "Candlestick",
+    "✳️ Heikin-Ashi":  "Heikin-Ashi",
+    "📈 Line":         "Line",
 }
 
 POPULAR = ["AAPL","MSFT","GOOGL","AMZN","NVDA","TSLA","META","BTC-USD","ETH-USD","SPY","QQQ"]
@@ -195,7 +234,7 @@ def compute_signal(df: pd.DataFrame):
     elif close < ema20 < ema50: score -= 2; sigs.append("🔴 EMA Bearish Stack")
     else:                                    sigs.append("➖ EMA Mixed")
 
-    macd = float(last.get("MACD", 0)); msig = float(last.get("MACD_signal", 0))
+    macd = float(last.get("MACD",0)); msig = float(last.get("MACD_signal",0))
     if macd > msig: score += 1; sigs.append("✅ MACD above Signal")
     else:           score -= 1; sigs.append("🔴 MACD below Signal")
 
@@ -218,7 +257,6 @@ def build_chart(df, ticker, show_ema, show_bb, show_volume, chart_type):
     fig = make_subplots(rows=rows, cols=1, shared_xaxes=True,
                         vertical_spacing=0.03, row_heights=heights)
 
-    # ── Main candles / line ──
     if chart_type == "Heikin-Ashi":
         ha = compute_heikin_ashi(df)
         fig.add_trace(go.Candlestick(
@@ -228,7 +266,6 @@ def build_chart(df, ticker, show_ema, show_bb, show_volume, chart_type):
             increasing_fillcolor="#3fb950",  decreasing_fillcolor="#f85149",
             name=f"{ticker} HA", line=dict(width=1),
         ), row=1, col=1)
-
     elif chart_type == "Candlestick":
         fig.add_trace(go.Candlestick(
             x=df.index, open=df["Open"], high=df["High"],
@@ -237,7 +274,6 @@ def build_chart(df, ticker, show_ema, show_bb, show_volume, chart_type):
             increasing_fillcolor="#3fb950",  decreasing_fillcolor="#f85149",
             name=ticker, line=dict(width=1),
         ), row=1, col=1)
-
     else:
         fig.add_trace(go.Scatter(
             x=df.index, y=df["Close"].squeeze(),
@@ -245,14 +281,12 @@ def build_chart(df, ticker, show_ema, show_bb, show_volume, chart_type):
             fill="tozeroy", fillcolor="rgba(88,166,255,0.07)", name=ticker,
         ), row=1, col=1)
 
-    # ── EMAs ──
     if show_ema:
         for col, color, lbl in [("EMA20","#f0883e","EMA 20"),("EMA50","#bc8cff","EMA 50"),("EMA200","#ff7b72","EMA 200")]:
             if col in df.columns:
                 fig.add_trace(go.Scatter(x=df.index, y=df[col],
                     line=dict(color=color, width=1), name=lbl, opacity=0.9), row=1, col=1)
 
-    # ── Bollinger Bands ──
     if show_bb and "BB_upper" in df.columns:
         for col, color, lbl in [("BB_upper","rgba(139,148,158,0.7)","BB Upper"),
                                   ("BB_mid",  "rgba(139,148,158,0.4)","BB Mid"),
@@ -260,21 +294,15 @@ def build_chart(df, ticker, show_ema, show_bb, show_volume, chart_type):
             fig.add_trace(go.Scatter(x=df.index, y=df[col],
                 line=dict(color=color, width=1, dash="dot"), name=lbl, opacity=0.8), row=1, col=1)
 
-    # ── MACD ──
     if "MACD" in df.columns:
         hc = ["#3fb950" if v >= 0 else "#f85149" for v in df["MACD_hist"].fillna(0)]
-        fig.add_trace(go.Bar(x=df.index, y=df["MACD_hist"], marker_color=hc,
-                              name="Hist", opacity=0.7), row=2, col=1)
-        fig.add_trace(go.Scatter(x=df.index, y=df["MACD"],
-                                  line=dict(color="#58a6ff", width=1), name="MACD"), row=2, col=1)
-        fig.add_trace(go.Scatter(x=df.index, y=df["MACD_signal"],
-                                  line=dict(color="#f0883e", width=1), name="Signal"), row=2, col=1)
+        fig.add_trace(go.Bar(x=df.index, y=df["MACD_hist"], marker_color=hc, name="Hist", opacity=0.7), row=2, col=1)
+        fig.add_trace(go.Scatter(x=df.index, y=df["MACD"], line=dict(color="#58a6ff", width=1), name="MACD"), row=2, col=1)
+        fig.add_trace(go.Scatter(x=df.index, y=df["MACD_signal"], line=dict(color="#f0883e", width=1), name="Signal"), row=2, col=1)
 
-    # ── Volume ──
     if show_volume and rows == 3:
         vc = ["#3fb950" if df["Close"].iloc[i] >= df["Open"].iloc[i] else "#f85149" for i in range(len(df))]
-        fig.add_trace(go.Bar(x=df.index, y=df["Volume"].squeeze(),
-                              marker_color=vc, name="Volume", opacity=0.65), row=3, col=1)
+        fig.add_trace(go.Bar(x=df.index, y=df["Volume"].squeeze(), marker_color=vc, name="Volume", opacity=0.65), row=3, col=1)
         if "Volume_MA" in df.columns:
             fig.add_trace(go.Scatter(x=df.index, y=df["Volume_MA"],
                                       line=dict(color="#bc8cff", width=1.2), name="Vol MA20"), row=3, col=1)
@@ -295,18 +323,11 @@ def build_chart(df, ticker, show_ema, show_bb, show_volume, chart_type):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SESSION STATE DEFAULTS
-# ═══════════════════════════════════════════════════════════════════════════════
-if "sel_tf"    not in st.session_state: st.session_state.sel_tf    = "1D"
-if "sel_chart" not in st.session_state: st.session_state.sel_chart = "Candlestick"
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
 # SIDEBAR
 # ═══════════════════════════════════════════════════════════════════════════════
 with st.sidebar:
     st.markdown('<div class="tv-title">📈 TradingView</div>', unsafe_allow_html=True)
-    st.markdown('<div style="color:#8b949e;font-size:13px;margin-bottom:4px">Python · Streamlit Dashboard</div>', unsafe_allow_html=True)
+    st.markdown('<div style="color:#8b949e;font-size:13px">Python · Streamlit Dashboard</div>', unsafe_allow_html=True)
     st.divider()
 
     ticker_input = st.text_input("Symbol", value="AAPL", placeholder="AAPL, BTC-USD …").upper().strip()
@@ -330,7 +351,6 @@ with st.sidebar:
     st.divider()
     st.caption("Data via Yahoo Finance · Cache: 60 s")
 
-
 period = PERIODS[period_label]
 
 
@@ -338,101 +358,102 @@ period = PERIODS[period_label]
 # MAIN
 # ═══════════════════════════════════════════════════════════════════════════════
 st.markdown(f'<div class="tv-title">📈 {ticker_input}</div>', unsafe_allow_html=True)
-st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
+st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
 
 # ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║  UNIFIED TOOLBAR  — Timeframe  |  Chart Type                               ║
+# ║  TOOLBAR  —  Timeframe pills  +  Chart type pills                          ║
 # ╚══════════════════════════════════════════════════════════════════════════════╝
-# We render three logical groups in one horizontal bar using Streamlit columns.
-# Group 1: Intraday   Group 2: Day/Week/Month   |   Group 3: Chart Type
 
-st.markdown("""
-<div style="color:#8b949e;font-size:11px;text-transform:uppercase;
-            letter-spacing:1px;margin-bottom:4px">
-  ⏱ Timeframe &nbsp;&nbsp;|&nbsp;&nbsp; 🕯️ Chart Type
+with st.container():
+    st.markdown('<div class="toolbar-container">', unsafe_allow_html=True)
+
+    # ── Row 1: Timeframe ──────────────────────────────────────────────────────
+    left_tf, right_ct = st.columns([3, 1], gap="large")
+
+    with left_tf:
+        st.markdown('<div class="toolbar-group-label">⏱ Timeframe</div>', unsafe_allow_html=True)
+
+        tf_row1, tf_row2 = st.columns([1.2, 1], gap="small")
+
+        with tf_row1:
+            st.markdown('<span style="color:#484f58;font-size:10px;font-family:JetBrains Mono,monospace;letter-spacing:1px">INTRADAY</span>', unsafe_allow_html=True)
+            sel_intra = st.pills(
+                label="intraday",
+                options=TF_INTRADAY,
+                default="1h",
+                key="pills_intraday",
+                label_visibility="collapsed",
+            )
+
+        with tf_row2:
+            st.markdown('<span style="color:#484f58;font-size:10px;font-family:JetBrains Mono,monospace;letter-spacing:1px">DAY · WEEK · MONTH</span>', unsafe_allow_html=True)
+            sel_dwm = st.pills(
+                label="dwm",
+                options=TF_DAILY + TF_WEEKLY + TF_MONTHLY,
+                default="1D",
+                key="pills_dwm",
+                label_visibility="collapsed",
+            )
+
+    # ── Row 1 Right: Chart Type ───────────────────────────────────────────────
+    with right_ct:
+        st.markdown('<div class="toolbar-group-label">🕯️ Chart Type</div>', unsafe_allow_html=True)
+        sel_chart_label = st.pills(
+            label="chart_type",
+            options=list(CHART_OPTIONS.keys()),
+            default="🕯️ Candlestick",
+            key="pills_chart",
+            label_visibility="collapsed",
+        )
+
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# ── Resolve selections ────────────────────────────────────────────────────────
+# Whichever pill group was last changed takes precedence for timeframe
+# We track via two independent pill groups; pick the most recently non-None one.
+# Default: prioritise daily group; fall back to intraday.
+if sel_dwm is not None and sel_intra is not None:
+    # Both selected — use session state to detect which changed last
+    prev_intra = st.session_state.get("_prev_intra", "1h")
+    prev_dwm   = st.session_state.get("_prev_dwm",   "1D")
+    if sel_intra != prev_intra:
+        active_tf = sel_intra
+    elif sel_dwm != prev_dwm:
+        active_tf = sel_dwm
+    else:
+        active_tf = st.session_state.get("_active_tf", "1D")
+elif sel_intra is not None:
+    active_tf = sel_intra
+elif sel_dwm is not None:
+    active_tf = sel_dwm
+else:
+    active_tf = "1D"
+
+st.session_state["_prev_intra"] = sel_intra or active_tf
+st.session_state["_prev_dwm"]   = sel_dwm   or active_tf
+st.session_state["_active_tf"]  = active_tf
+
+interval   = TF_TO_INTERVAL.get(active_tf, "1d")
+chart_type = CHART_OPTIONS.get(sel_chart_label, "Candlestick") if sel_chart_label else "Candlestick"
+
+# ── Active state info bar ─────────────────────────────────────────────────────
+ha_tag = ' <span class="ha-badge">HA</span>' if chart_type == "Heikin-Ashi" else ""
+st.markdown(f"""
+<div class="active-bar">
+  <div class="active-item"><span class="active-key">Timeframe</span><span class="active-val">{active_tf}</span></div>
+  <div class="active-item"><span class="active-key">Interval</span><span class="active-val">{interval}</span></div>
+  <div class="active-item"><span class="active-key">Period</span><span class="active-val">{period_label}</span></div>
+  <div class="active-item"><span class="active-key">Chart</span><span class="active-val">{chart_type}{ha_tag}</span></div>
 </div>""", unsafe_allow_html=True)
 
-# ── Row A : Intraday + separator + Day/Week/Month + separator + Chart type ──
-# We use a single columns() call so everything sits on one visual line.
-# Counts: 6 intraday + 1 gap + 5 dwm + 1 gap + 3 chart = 16 cols
-INTRA_KEYS = list(INTRADAY.keys())   # 6
-DWM_KEYS   = list(DAILY.keys()) + list(WEEKLY.keys()) + list(MONTHLY.keys())  # 5
-CT_KEYS    = list(CHART_OPTIONS.keys())   # 3
-
-# Build column width proportions: tiny gap cols for separators
-col_widths = (
-    [1]*len(INTRA_KEYS) + [0.15] +   # intraday + sep
-    [1]*len(DWM_KEYS)   + [0.15] +   # dwm + sep
-    [1.4]*len(CT_KEYS)               # chart type (slightly wider)
-)
-toolbar_cols = st.columns(col_widths, gap="small")
-
-col_idx = 0
-
-# ── Intraday buttons ──
-for lbl in INTRA_KEYS:
-    active = st.session_state.sel_tf == lbl
-    with toolbar_cols[col_idx]:
-        if st.button(lbl, key=f"tf_{lbl}",
-                     type="primary" if active else "secondary",
-                     use_container_width=True):
-            st.session_state.sel_tf = lbl
-            st.rerun()
-    col_idx += 1
-
-# separator column — just empty
-col_idx += 1
-
-# ── Day / Week / Month buttons ──
-for lbl in DWM_KEYS:
-    active = st.session_state.sel_tf == lbl
-    with toolbar_cols[col_idx]:
-        if st.button(lbl, key=f"tf_{lbl}",
-                     type="primary" if active else "secondary",
-                     use_container_width=True):
-            st.session_state.sel_tf = lbl
-            st.rerun()
-    col_idx += 1
-
-# separator column
-col_idx += 1
-
-# ── Chart type buttons ──
-for ct in CT_KEYS:
-    active = st.session_state.sel_chart == ct
-    icon   = {"Candlestick":"🕯️","Heikin-Ashi":"✳️","Line":"📈"}[ct]
-    short  = {"Candlestick":"Candle","Heikin-Ashi":"Heikin-Ashi","Line":"Line"}[ct]
-    with toolbar_cols[col_idx]:
-        if st.button(f"{icon} {short}", key=f"ct_{ct}",
-                     type="primary" if active else "secondary",
-                     use_container_width=True):
-            st.session_state.sel_chart = ct
-            st.rerun()
-    col_idx += 1
-
-interval   = ALL_TF[st.session_state.sel_tf]
-chart_type = st.session_state.sel_chart
-
-# Active state hint
-hint_parts = [f"**{st.session_state.sel_tf}** candles", f"**{period_label}** period", f"**{chart_type}** chart"]
-if chart_type == "Heikin-Ashi":
-    hint_parts.append('<span class="ha-badge">HA</span>')
-st.markdown(
-    '<span style="color:#484f58;font-size:12px">' +
-    " · ".join(hint_parts) + "</span>",
-    unsafe_allow_html=True
-)
-
-st.markdown("<div style='height:6px'></div>", unsafe_allow_html=True)
-
 # ── Fetch ─────────────────────────────────────────────────────────────────────
-with st.spinner(f"Fetching {ticker_input}…"):
+with st.spinner(f"Fetching {ticker_input} · {active_tf} · {period_label}…"):
     df = fetch_data(ticker_input, period, interval)
 
 if df.empty:
     st.error(
-        f"❌ No data for **{ticker_input}** · interval `{interval}` · period `{period}`. "
-        "Try a longer period or switch to a Daily/Weekly interval."
+        f"❌ No data for **{ticker_input}** · `{interval}` · `{period}`. "
+        "Try a longer period, or switch to a Daily/Weekly timeframe."
     )
     st.stop()
 
@@ -525,7 +546,7 @@ with tab2:
     ha_df = compute_heikin_ashi(df)
     ha_d  = ha_df[["HA_Open","HA_High","HA_Low","HA_Close"]].tail(50).sort_index(ascending=False).round(4)
     ha_d.columns = ["HA Open","HA High","HA Low","HA Close"]
-    st.caption("HA_Close=(O+H+L+C)/4 · HA_Open=(prev_HA_Open+prev_HA_Close)/2 · HA_High=max(H,HA_O,HA_C) · HA_Low=min(L,HA_O,HA_C)")
+    st.caption("HA_Close=(O+H+L+C)/4 · HA_Open=(prev_HA_Open+prev_HA_Close)/2")
     st.dataframe(ha_d, use_container_width=True, height=380)
 
 with tab3:
@@ -542,4 +563,4 @@ with tab4:
     st.info("≥ +3 = BUY · ≤ -3 = SELL · else NEUTRAL")
 
 st.divider()
-st.caption("⚡ Python · Streamlit · Plotly · yfinance · ta  |  Yahoo Finance data  |  Not financial advice")
+st.caption("⚡ Python · Streamlit · Plotly · yfinance · ta  |  Yahoo Finance  |  Not financial advice")
