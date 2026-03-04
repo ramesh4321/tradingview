@@ -159,14 +159,14 @@ PERIODS = {
     "6 Months":"6mo","1 Year":"1y","2 Years":"2y","5 Years":"5y","Max":"max",
 }
 
-# ── Chart types ──
-CHART_TYPES = {
+POPULAR = ["AAPL","MSFT","GOOGL","AMZN","NVDA","TSLA","META","BTC-USD","ETH-USD","SPY","QQQ"]
+
+# Chart type options  display label → internal key
+CHART_OPTIONS = {
     "🕯️ Candlestick": "Candlestick",
     "✳️ Heikin-Ashi":  "Heikin-Ashi",
     "📈 Line":         "Line",
 }
-
-POPULAR = ["AAPL","MSFT","GOOGL","AMZN","NVDA","TSLA","META","BTC-USD","ETH-USD","SPY","QQQ"]
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
